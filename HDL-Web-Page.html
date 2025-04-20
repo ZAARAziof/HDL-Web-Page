@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computer Systems Q&A Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {margin:0; font-family:'Orbitron',sans-serif; background:linear-gradient(to bottom right,#121212,#1e1e2e); color:#f0f0f0;}
+    header {background:linear-gradient(to right,#6a11cb,#2575fc); padding:2rem; text-align:center; color:#fff; box-shadow:0 0 15px #6a11cb;}
+    h1 {margin:0; font-size:2.5rem;}
+    .container {max-width:1200px; margin:2rem auto; padding:1rem;}
+    .section {margin-bottom:3rem; border-left:5px solid #2575fc; padding-left:1rem;}
+    .section h2 {color:#00e676; margin-bottom:1rem; border-bottom:2px solid #00e676; padding-bottom:0.5rem;}
+    .question {background:rgba(30,30,40,0.7); border-radius:8px; padding:1rem; margin:1rem 0; transition:transform .3s,box-shadow .3s;}
+    .question:hover {transform:scale(1.02); box-shadow:0 0 15px #6a11cb;}
+    .question strong {display:block; margin-bottom:0.5rem; font-size:1.1rem; color:#ffab40;}
+    .answer {display:none; background:#252535; color:#e0e0e0; padding:.8rem; margin-top:.5rem; border-radius:5px; font-family:monospace; white-space:pre-wrap;}
+    .btn {margin-top:.5rem; padding:.5rem 1rem; font-size:.9rem; font-weight:bold; border:none; background:#2575fc; color:#fff; border-radius:5px; cursor:pointer; transition:background .3s;}
+    .btn:hover {background:#ff4081; color:#fff;}
+    footer {text-align:center; padding:2rem; background:#1a1a1a; color:#aaa;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💻 Computer Systems Q&A Hub 🧠</h1>
+    <p>Focused Topics: Logic Gates, Binary, HDL, CPU & Registers, RAM, Simulators 🔍</p>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔢 Binary & Logic Gates</h2>
+      <div class="question">
+        <strong>What is a truth table?</strong>
+        <div class="answer">A truth table lists all possible input combinations and their corresponding outputs for a logic gate or circuit.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Explain the difference between AND, OR, and XOR gates.</strong>
+        <div class="answer">AND outputs 1 if both inputs are 1; OR outputs 1 if at least one input is 1; XOR outputs 1 if exactly one input is 1.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>How do you convert decimal 13 to binary?</strong>
+        <div class="answer">13 in binary = 1101 (8 + 4 + 0 + 1).</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🧬 HDL & Circuit Design</h2>
+      <div class="question">
+        <strong>Write HDL code for a two-input NAND gate.</strong>
+        <div class="answer">CHIP Nand { IN a,b; OUT out; PARTS: Not(in=And(a=a,b=b), out=out); }</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Write HDL code for a two-input AND gate.</strong>
+        <div class="answer">CHIP And { IN a,b; OUT out; PARTS: And(a=a,b=b,out=out); }</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Write HDL code for a Half Adder.</strong>
+        <div class="answer">CHIP HalfAdder { IN a,b; OUT sum,carry; PARTS: Xor(a=a,b=b,out=sum); And(a=a,b=b,out=carry); }</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Write HDL code for a Full Adder.</strong>
+        <div class="answer">CHIP FullAdder { IN a,b,cin; OUT sum,cout; PARTS: HalfAdder(a=a,b=b,sum=ha1,sum=ha1sum,carry=ha1carry); HalfAdder(a=ha1sum,b=cin,sum=sum,carry=ha2carry); Or(a=ha1carry,b=ha2carry,out=cout); }</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Write HDL code for a 2:1 Multiplexer.</strong>
+        <div class="answer">CHIP Mux2 { IN a,b,sel; OUT out; PARTS: And(a=sel,b=b,out=and1); Not(in=sel,out=nsel); And(a=nsel,b=a,out=and2); Or(a=and1,b=and2,out=out); }</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>What is a D flip-flop in HDL?</strong>
+        <div class="answer">A D flip-flop is a memory element that captures input D on a clock edge and holds it until the next clock. Example implementation uses a register clocked by clk.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>💾 CPU & Registers</h2>
+      <div class="question">
+        <strong>What is the purpose of the Program Counter (PC)?</strong>
+        <div class="answer">PC holds the address of the next instruction to be fetched from memory.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Explain the role of general-purpose registers.</strong>
+        <div class="answer">General-purpose registers store data and addresses for immediate use by the CPU.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>💽 RAM & Memory</h2>
+      <div class="question">
+        <strong>What is volatile memory?</strong>
+        <div class="answer">Volatile memory (like RAM) loses its data when power is turned off.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Difference between SRAM and DRAM?</strong>
+        <div class="answer">SRAM uses flip-flops and is faster, DRAM uses capacitors and needs refresh cycles.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🖥️ Hardware Simulators</h2>
+      <div class="question">
+        <strong>What is a hardware simulator?</strong>
+        <div class="answer">A simulator emulates hardware behavior in software to test and debug circuits.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+      <div class="question">
+        <strong>Name a popular HDL simulator.</strong>
+        <div class="answer">ModelSim and Xilinx Vivado are common HDL simulators.</div>
+        <button class="btn" onclick="toggleAnswer(this)">Show Answer</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 GITHUB project by <span style="color:#2575fc; font-weight:bold;"> ZAARA - SITHUM</span></p>
+  </footer>
+
+  <script>
+    function toggleAnswer(button) {
+      const ans = button.previousElementSibling;
+      const show = ans.style.display !== 'block';
+      ans.style.display = show ? 'block' : 'none';
+      button.textContent = show ? 'Hide Answer' : 'Show Answer';
+    }
+  </script>
+</body>
+</html>
